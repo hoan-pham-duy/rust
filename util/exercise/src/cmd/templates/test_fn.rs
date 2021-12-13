@@ -2,7 +2,7 @@
 
 #[test]
 {% if not first_test_case -%}
-#[ignore]
+//#[ignore]
 {% endif -%}
 /// {{ description }}
 {% if comments -%}

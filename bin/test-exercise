@@ -81,7 +81,7 @@ if [ -n "$DENYWARNINGS" ]; then
    sed -i -e '1i #![deny(warnings)]' "$exercise/src/lib.rs"
 fi
 
-# eliminate #[ignore] lines from tests
+# eliminate //#[ignore] lines from tests
 for test in "$exercise/"tests/*.rs; do
    sed -i -e '/#\[ignore\]/{
       s/#\[ignore\]\s*//

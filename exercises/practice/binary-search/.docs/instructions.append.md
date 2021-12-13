@@ -27,7 +27,7 @@ are some additional things you could try.
 - Additionally this find function can work not only on slices, but at the
   same time also on a Vec or an Array.
 
-To run the bonus tests, remove the `#[ignore]` flag and execute the tests with
+To run the bonus tests, remove the `//#[ignore]` flag and execute the tests with
 the `generic` feature, like this:
 
 ```bash

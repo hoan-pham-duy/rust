@@ -12,7 +12,7 @@ To run the tests, all you need to do is run the following command:
 $ cargo test
 ```
 
-Only the first test is enabled by default.  After you are ready to pass the next test, remove the ignore flag from the next test (`#[ignore]`).  You can also remove the flag from all the tests at once if you prefer.
+Only the first test is enabled by default.  After you are ready to pass the next test, remove the ignore flag from the next test (`//#[ignore]`).  You can also remove the flag from all the tests at once if you prefer.
 
 You should try to write as little code possible to get the tests to pass.  Let the test failures guide you to what should be written next.
 
