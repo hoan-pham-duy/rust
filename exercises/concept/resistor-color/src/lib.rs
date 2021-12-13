@@ -1,9 +1,24 @@
 use enum_iterator::IntoEnumIterator;
 use int_enum::IntEnum;
 
-#[repr(u8)]
-#[derive(Clone, Copy, Eq, IntEnum, Debug, IntoEnumIterator, PartialEq)]
+#[derive(Clone, Copy, Eq, Debug, IntoEnumIterator, PartialEq)]
 pub enum ResistorColor {
+    Black,
+    Blue,
+    Brown,
+    Green,
+    Grey,
+    Orange,
+    Red,
+    Violet,
+    White,
+    Yellow,
+}
+
+
+#[repr(usize)]
+#[derive(Clone, Copy, Eq, IntEnum, Debug, IntoEnumIterator, PartialEq)]
+pub enum ResistorColorWithVal {
     Black = 0,
     Blue = 1,
     Brown = 2,
@@ -16,16 +31,30 @@ pub enum ResistorColor {
     Yellow = 9,
 }
 
+
 pub fn color_to_value(_color: ResistorColor) -> usize {
-    _color.int_value() as usize
+    match _color {
+        ResistorColor::Black => 0,
+        ResistorColor::Blue => 1,
+        ResistorColor::Brown => 2,
+        ResistorColor::Green => 3,
+        ResistorColor::Grey => 4,
+        ResistorColor::Orange => 5,
+        ResistorColor::Red => 6,
+        ResistorColor::Violet => 7,
+        ResistorColor::White => 8,
+        ResistorColor::Yellow => 9,
+    }
 }
 
+
 pub fn value_to_color_string(value: usize) -> String {
-    // unimplemented!(
-    //     "convert the value {} into a string representation of color",
-    //     value
-    // )
-    format!("{:#?}", ResistorColor::from_int(value.try_into().unwrap()))
+    let color = ResistorColorWithVal::from_int(value).unwrap();
+    // let color_str = match color {
+    //     Ok(str) => str,
+    //     Err(e) => e
+    // };
+    format!("{:?}", color)
 }
 
 pub fn colors() -> Vec<ResistorColor> {
