@@ -37,11 +37,12 @@ pub fn modulo_exp(base: u64, exp: u64, modulor: u64) -> u64 {
     /*
     (m * n) % p = ((m % p) * (n % p)) % p
 
-    8^5 % 6 = ((8^2) * (8^2)) % 6 = (((8*8)%6)^2)%6 = ((8%6)^2%6)^2)%6 = ((2%6)^2)%6 = 4
+    8^5 % 6 = (8%6) * ((8^2) * (8^2)) % 6) = 2 * (((8*8)%6)^2)%6 = 2*4 % 6 = 2
+    8^3 % 6 = ((8%6) * ((8%6) * (8%6)) % 6)) % 6
      */
     if modulor == 1 {
         return 0;
-    };
+    }
     let mut result = 1;
     let mut base = base;
     let mut exp = exp;
@@ -50,7 +51,7 @@ pub fn modulo_exp(base: u64, exp: u64, modulor: u64) -> u64 {
             result = (result * base) % modulor;
         }
         exp = exp >> 1;
-        base = (base * base) % modulor;
+        base = ((base % modulor) * (base %  modulor)) % modulor; // compute (base ^ 2) % modulor
     }
     result
 }
